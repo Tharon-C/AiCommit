@@ -73,6 +73,7 @@ async function generateCommitMessage(diff) {
   // Send a request to the ChatGPT API to generate text
   const response = await fetchOpenAi(prompt, apiKey);
   const json = await response.json();
+  console.log(json);
   const message = json.choices[0].message.content;
 
   return message;
