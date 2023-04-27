@@ -30,6 +30,9 @@ ai-commit --dry-run
 
 This will print the generated commit message to the console without committing the changes.
 
+## Note
+There is a max token limit to your diff determined by your OpenAI account. Large diffs may be too large for your account's limit. If you encounter any issues, consider breaking up your changes into smaller commits or upgrading your OpenAI account.
+
 ## Contributing
 
 If you find a bug or want to suggest a feature, feel free to open an issue or submit a pull request on the [GitHub repository](https://github.com/your-username/aicommit).
