@@ -73,10 +73,17 @@ async function generateCommitMessage(diff) {
   // Send a request to the ChatGPT API to generate text
   const response = await fetchOpenAi(prompt, apiKey);
   const json = await response.json();
-  console.log(json);
-  const message = json.choices[0].message.content;
-
-  return message;
+  if(json.error) {
+    if (json.error.code === 'insufficient-funds') {
+      console.error('Insufficient funds. Please add more credits to your OpenAI account.');
+    }
+    if (json.error.code === 'context_length_exceeded') {
+      console.error('Your git diff is too long for the token limit on this model. Please commit your changes in smaller chunks');
+    }
+    return '';
+  } else {
+    return json.choices[0].message.content;
+  }
 }
 
 const argv = yargs(hideBin(process.argv))
@@ -95,6 +102,7 @@ const diff = execSync('git diff --cached', { encoding: 'utf-8' });
 generateCommitMessage(diff)
   .then(message => {
     if (!message) {
+      console.log('\nAborting');
       return;
     }
     // Prompt the user to approve the commit message
