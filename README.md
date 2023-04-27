@@ -10,22 +10,22 @@ To install `AiCommit`, run the following command:
 npm install -g aicommit
 ```
 
-This will install the `aicommit` command globally on your system.
+This will install the `ai-commit` command globally on your system.
 
 ## Usage
 
 To use `AiCommit`, navigate to a Git repository with staged changes and run the following command:
 
 ```
-aicommit
+ai-commit
 ```
 
-This will prompt you to enter your OpenAI API key, which will be stored in a file named `.aiCommit` in your home directory. If you don't have an API key, you can sign up for one at the [OpenAI website](https://openai.com/).
+This will prompt you to enter your OpenAI API key, which will be stored in a file named `.ai-commit` in your home directory. If you don't have an API key, you can sign up for one at the [OpenAI website](https://openai.com/).
 
 Once you've entered your API key, `AiCommit` will generate a commit message based on the diff of the currently staged changes using OpenAI, and prompt you to confirm the commit. If you want to print the generated commit message without committing the changes, use the `--dry-run` option:
 
 ```
-aicommit --dry-run
+ai-commit --dry-run
 ```
 
 This will print the generated commit message to the console without committing the changes.

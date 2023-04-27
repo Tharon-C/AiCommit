@@ -9,7 +9,7 @@ import fs from 'fs';
 import os from 'os';
 import path from 'path';
 
-const configFile = '.aiCommit';
+const configFile = '.ai-commit';
 const configPath = path.join(os.homedir(), configFile);
 
 // Read API key from config file
