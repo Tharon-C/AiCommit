@@ -1,6 +1,6 @@
 # AiCommit
 
-`AiCommit` is a command line tool that generates commit messages using OpenAI. It takes a diff of staged changes as input and uses the OpenAI API to generate a short, meaningful commit message that summarizes the changes.
+`AiCommit` is a command line tool that generates commit messages using ChatGPT. It takes a diff of staged changes as input and uses the OpenAI API to generate a short, meaningful commit message that summarizes the changes.
 
 ## Installation
 
