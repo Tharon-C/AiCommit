@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "allowJs": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "resolveJsonModule": true,
+        "noImplicitReturns": true,
+        "esModuleInterop": true,
+        "moduleResolution": "Node",
+        "module": "ES2020",
+        "baseUrl": "src",
+        "paths": {
+            "@code/*": [
+                "day3/*"
+            ]
+        }
+    },
+    "include": [
+        "./src/**/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
