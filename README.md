@@ -22,7 +22,7 @@ ai-commit
 
 This will prompt you to enter your OpenAI API key, which will be stored in a file named `.ai-commit` in your home directory. If you don't have an API key, you can sign up for one at the [OpenAI website](https://openai.com/).
 
-Once you've entered your API key, `AiCommit` will generate a commit message based on the diff of the currently staged changes using OpenAI, and prompt you to confirm the commit. If you want to print the generated commit message without committing the changes, use the `--dry-run` option:
+Once you've entered your API key, `AiCommit` will generate a commit message based on the diff of the currently staged changes using OpenAI, and open the commit message in vim for you to edit. Close and save and a you will be prompted to confirm the commit. If you want to print the generated commit message without committing the changes, use the `--dry-run` option:
 
 ```
 ai-commit --dry-run
