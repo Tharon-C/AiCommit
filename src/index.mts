@@ -50,7 +50,7 @@ generateCommitMessage(diff, apiKey)
         input: process.stdin,
         output: process.stdout
       });
-      rl.question(`Commit message: ${editedMessage}\n Approve? (y/n) `, answer => {
+      rl.question(`Commit message:\n ${editedMessage}\n Approve? (y/n) `, answer => {
         rl.close();
         if (answer.toLowerCase() === 'y') {
           if (!argv.dryRun) {
