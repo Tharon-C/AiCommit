@@ -1,5 +1,8 @@
 #!/usr/bin/env node
-
+import fs from 'fs';
+import path from 'path';
+import os from 'os';
+import { spawn } from 'child_process';
 import { execSync } from 'child_process';
 import yargs from 'yargs/yargs';
 import { hideBin } from 'yargs/helpers';
@@ -29,21 +32,34 @@ generateCommitMessage(diff, apiKey)
       console.log('\nAborting');
       return;
     }
-    // Prompt the user to approve the commit message
-    const rl = readline.createInterface({
-      input: process.stdin,
-      output: process.stdout
+      // Create temporary file
+    const tmpFile = path.join(os.tmpdir(), 'message.txt');
+    fs.writeFileSync(tmpFile, message);
+
+    // Open file in Vim for editing
+    const vim = spawn('vim', [tmpFile], {
+      stdio: 'inherit'
     });
-    rl.question(`Commit message: ${message}\n Approve? (y/n) `, answer => {
-      rl.close();
-      if (answer.toLowerCase() === 'y') {
-        if (!argv.dryRun) {
-          execSync(`git commit -m "${message}"`);
+
+    vim.on('exit', (code, signal) => {
+      // Read edited message from file
+      const editedMessage = fs.readFileSync(tmpFile, 'utf8').trim();
+
+      // Prompt the user to approve the commit message
+      const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+      });
+      rl.question(`Commit message: ${message}\n Approve? (y/n) `, answer => {
+        rl.close();
+        if (answer.toLowerCase() === 'y') {
+          if (!argv.dryRun) {
+            execSync(`git commit -m "${message}"`);
+          }
+        } else {
+          console.log('Commit message not approved. Aborting.');
         }
-      } else {
-        console.log('Commit message not approved. Aborting.');
-      }
-      process.exit(0);
+      });
     });
   })
   .catch(error => {

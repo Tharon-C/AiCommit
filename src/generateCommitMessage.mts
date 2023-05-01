@@ -5,7 +5,16 @@ export async function generateCommitMessage(diff: string, api: string = '') {
       console.log('No changes to commit.');
       return false;
     }
-    const prompt = `Generate a git commit message for the following diff. Format should be first line summary. If summary exceeds 50 chars, skip line then list of changes. Include all changes"\n\n${diff}\n\n`; // Prompt for the ChatGPT model
+    const prompt = `Generate a git commit message for the following diff. First line should not exceed 50 characters.
+    Include all changes and follow this format:
+    
+    Summary of changes
+
+    - Change 1
+    - Change 2
+    
+    Here is the diff:
+    "\n\n${diff}\n\n`; // Prompt for the ChatGPT model
     
     // Send a request to the ChatGPT API to generate text
     const response = await fetchOpenAi(prompt, api);
