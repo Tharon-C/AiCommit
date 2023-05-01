@@ -1,11 +1,11 @@
 {
-  "name": "ai-commit",
+  "name": "ai-commit-js",
   "version": "1.0.0",
   "description": "AI generated commit messages",
   "main": "index.mjs",
   "preferGlobal": true,
   "bin": {
-    "ai-commit": "./index.js"
+    "ai-commit": "./dist/index.mjs"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

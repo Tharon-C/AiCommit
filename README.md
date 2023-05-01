@@ -7,7 +7,7 @@
 To install `AiCommit`, run the following command:
 
 ```
-npm install -g aicommit
+npm install -g ai-commit-js
 ```
 
 This will install the `ai-commit` command globally on your system.
