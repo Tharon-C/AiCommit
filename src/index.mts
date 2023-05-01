@@ -50,11 +50,11 @@ generateCommitMessage(diff, apiKey)
         input: process.stdin,
         output: process.stdout
       });
-      rl.question(`Commit message: ${message}\n Approve? (y/n) `, answer => {
+      rl.question(`Commit message: ${editedMessage}\n Approve? (y/n) `, answer => {
         rl.close();
         if (answer.toLowerCase() === 'y') {
           if (!argv.dryRun) {
-            execSync(`git commit -m "${message}"`);
+            execSync(`git commit -m "${editedMessage}"`);
           }
         } else {
           console.log('Commit message not approved. Aborting.');

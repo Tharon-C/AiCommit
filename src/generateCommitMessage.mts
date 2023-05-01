@@ -6,7 +6,7 @@ export async function generateCommitMessage(diff: string, api: string = '') {
       return false;
     }
     const prompt = `Generate a git commit message for the following diff. First line should not exceed 50 characters.
-    Include all changes and follow this format:
+    Include all changes and follow this format. Note there is a blank line between the summary and changes:
     
     Summary of changes
 
